@@ -1,0 +1,25 @@
+#map{
+	width: 300px;
+
+}
+
+body{
+	/*background-image: url("../assets/LOGOFINAL.png") ;
+	background-size: 170px;*/
+	padding-left: 70px;
+	background-color: #A9D0F5;
+
+}
+
+#logo{
+	height: 250px;
+	width: 200px;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+#images{
+	width: 300px;
+	float: right;
+
+}
