@@ -15,6 +15,7 @@ adventure = {
 	
 	create: function(){
     
+    sound.play();
 		//Start the Arcade Physics systems
     game.physics.startSystem(Phaser.Physics.ARCADE);
  
@@ -61,6 +62,8 @@ adventure = {
    
     map.setTileLocationCallback(23, 62, 8, 15, this.hitBuild, this, "GroundLayer");
     map.setTileLocationCallback(111,54,24,4,this.bookManCall, this, "GroundLayer");
+    map.setTileLocationCallback(40,40,2,5,this.cafeCall, this, "GroundLayer");
+
     //Debug collisions layer
     groundLayer.debug = true;
 
@@ -106,6 +109,8 @@ adventure = {
 
     var text1 = game.add.text(16*23,16*66, "Edificio \n     A", style2);
     var text2 = game.add.text(16*23,16*43, "Edificio \n     E", style2);
+    var text2 = game.add.text(16*33,16*41, "Cafeteria", style2);
+    var text2 = game.add.text(16*35,16*47, "Edificio\n      F", style2);
     var text3 = game.add.text(16*29,16*25, "Edificio \n     C", style2);
     var text4 = game.add.text(16*75,16*25, "Edificio \n     D", style2);
     var text5 = game.add.text(16*78,16*2, "Edificio \n     H", style2);
@@ -121,16 +126,25 @@ adventure = {
 	hitBuild: function(sprite, tile) {
         sessionStorage.positionX = sprite.x+5;
         sessionStorage.positionY = sprite.y;
-	    window.location = ("../../tetris/index.html");
+	    window.location = ("tetris/index.html");
 	    return true;
 	},
 
     bookManCall: function(sprite, tile) {
         sessionStorage.positionX = sprite.x;
         sessionStorage.positionY = sprite.y+5;
-        window.location = ("../../book_man/index.html");
+        window.location = ("book_man/index.html");
         return true;
     },
+
+    cafeCall: function(sprite, tile) {
+        sessionStorage.positionX = sprite.x+5;
+        sessionStorage.positionY = sprite.y;
+        window.location = ("cafe/cafeteria.html");
+        return true;
+    },
+
+
 
 
 
