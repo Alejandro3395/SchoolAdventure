@@ -251,7 +251,7 @@ function collisionHandler (bullet, enemy) {
         } else {
             // aumentar nivel y dificultad
             level = level + 1;
-            shutterSpeed = shutterSpeed - 1050;
+            shutterSpeed = shutterSpeed - 500*level;
 
             stateText.text = " ¡Bien!, \n Presiona la tecla C \n para continuar \n al nivel " + level;
             stateText.visible = true;
