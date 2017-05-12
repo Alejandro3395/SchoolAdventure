@@ -241,7 +241,7 @@ function collisionHandler (bullet, enemy) {
         enemyBullets.callAll('kill',this);
 
         //  next level
-        if (level == 3) {
+        if (level == 5) {
             stateText.text = " ¡Ganaste!, \n Presiona la tecla C \n para salir";
             stateText.visible = true;
             level = 1;
