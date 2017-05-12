@@ -44,7 +44,7 @@ var fireButton;
 var continueKey;
 var restartKey;
 var soundtrack;
-var shutterSpeed = 3000;
+var shootingSpeed = 2500;
 var level = 1;
 
 function create() {
@@ -87,7 +87,7 @@ function create() {
     enemyBullets.setAll('checkWorldBounds', true);
     
     //button home
-    button = game.add.button(12.5 ,520 ,  'buttonhome',goMainGame);
+    button = game.add.button(12.5 , 490 , 'buttonhome',goMainGame);
 
 
     //  El personaje del jugador
@@ -241,17 +241,17 @@ function collisionHandler (bullet, enemy) {
         enemyBullets.callAll('kill',this);
 
         //  next level
-        if (level == 3) {
+        if (level == 5) {
             stateText.text = " ¡Ganaste!, \n Presiona la tecla C \n para salir";
             stateText.visible = true;
             level = 1;
-            shutterSpeed = 3000;
+            shootingSpeed = 2500;
             // regresar al juego principal
             continueKey.onDown.addOnce(goMainGame, this);
         } else {
             // aumentar nivel y dificultad
             level = level + 1;
-            shutterSpeed = shutterSpeed - 1050;
+            shootingSpeed = shootingSpeed - 500;
 
             stateText.text = " ¡Bien!, \n Presiona la tecla C \n para continuar \n al nivel " + level;
             stateText.visible = true;
@@ -298,7 +298,7 @@ function enemyHitsPlayer (player,bullet) {
         //  Reiniciar
         // game.input.onTap.addOnce(restart,this);
         level = 1;
-        shutterSpeed = 3000;
+        shootingSpeed = 2500;
         restartKey.onDown.addOnce(restart, this);
     }
 
@@ -325,7 +325,7 @@ function enemyCrashPlayer(enemy, player) {
     //  Reiniciar
     // game.input.onTap.addOnce(restart,this);
     level = 1;
-    shutterSpeed = 3000;
+    shootingSpeed = 2500;
     restartKey.onDown.addOnce(restart, this);
 }
 
@@ -349,7 +349,7 @@ function hitWall(enemy, wall) {
     //  Reiniciar
     // game.input.onTap.addOnce(restart,this);
     level = 1;
-    shutterSpeed = 3000;
+    shootingSpeed = 2500;
     restartKey.onDown.addOnce(restart, this);
 }
 
@@ -379,7 +379,7 @@ function enemyFires () {
         enemyBullet.reset(shooter.body.x, shooter.body.y);
 
         game.physics.arcade.moveToObject(enemyBullet,player,120);
-        firingTimer = game.time.now + shutterSpeed;
+        firingTimer = game.time.now + shootingSpeed;
     }
 
 }

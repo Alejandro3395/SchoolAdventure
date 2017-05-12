@@ -268,7 +268,7 @@ level1BM = {
     	 }
     	lives.fixedToCamera = true;
 
-    	button = game.add.button(12.5 ,16.6*tileSize ,  'button',this.actionOnClick);
+    	button = game.add.button(12.5 ,15.61*tileSize ,  'button',this.actionOnClick);
     	button.fixedToCamera=true;
 
      	gameoverText = game.add.text(game.world.centerX-225,game.world.centerY,' ', { font: '50px Arial', fill: '#fff' });
