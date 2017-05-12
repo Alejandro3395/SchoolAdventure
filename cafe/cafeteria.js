@@ -423,7 +423,7 @@ function restart () {
 }
 
 function goMainGame() {
-     window.location = ("../schoolAdventure.html");    
+     window.location = ("../index.html");    
 
 }
 

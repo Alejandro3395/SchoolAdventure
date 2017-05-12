@@ -229,7 +229,7 @@ Game.create = function(){
 };
 
     function actionOnClick (){
-        window.location = ("../schoolAdventure.html");
+        window.location = ("../index.html");
     }
 
 
@@ -510,12 +510,10 @@ function gameOver(){
     makeShade();
     var gameover = game.add.bitmapText(game.world.centerX, game.world.centerY, 'gameover', 'GAME OVER',64);
     gameover.anchor.setTo(0.5);
-    window.location = ("../schoolAdventure.html");
+    window.location = ("../index.html");
 }
 
-function moveRutilio(){
 
-}
 
 function hideRutilio(){
     while(rutilio.x <=910){

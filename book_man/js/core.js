@@ -74,5 +74,4 @@ game.state.add("preload", preload);
 game.state.add("level1",level1BM);
 game.state.add("level2", level2BM);
 game.state.add("level3", level3BM);
-//game.state.add("level3",level3BM);
 game.state.start("boot");
