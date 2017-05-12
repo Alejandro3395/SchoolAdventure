@@ -217,7 +217,7 @@ Game.create = function(){
     loop = timer.loop(timeOut, fall, this);
     timer.start();
 
-    button = game.add.button(840 ,40 ,  'buttonhome',actionOnClick);
+    button = game.add.button(810 ,40 ,  'buttonhome',actionOnClick);
 
     // Sound effets and Game.radio.music
     Game.radio.moveSound = game.add.audio('move');

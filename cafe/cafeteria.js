@@ -87,7 +87,7 @@ function create() {
     enemyBullets.setAll('checkWorldBounds', true);
     
     //button home
-    button = game.add.button(12.5 ,520 ,  'buttonhome',goMainGame);
+    button = game.add.button(12.5 , 490 , 'buttonhome',goMainGame);
 
 
     //  El personaje del jugador
