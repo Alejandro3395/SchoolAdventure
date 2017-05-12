@@ -1,4 +1,4 @@
-var level1BM = level1BM || {};
+var level3BM = level3BM || {};
 
 var cursors;
 var player;
@@ -9,27 +9,27 @@ var  isValidTile=false;
 var x,y;
 var style = { font: "20px Arial black", fill: "#ffffffff" };
 var lifes;
-var counterPoints=0;
+var counterPoints;
 var scoreString = "";
 var textpoints;
 var gameoverText;
 var winText;
-var booksPicked =0;
-var totalLife =3;
-var continueKey;
+var booksPicked ;
+var totalLife ;
 
-level1BM = {
-
+level3BM = {
 
 	actionOnClick:function(){
 		window.location = ("../schoolAdventure.html");
 	},
 
 	create: function(){
+		collectablesNum = 60;
+		booksPicked =0;
+		totalLife = Number(sessionStorage.lives);
+		counterPoints = Number(sessionStorage.points);
 
-		collectablesNum =30 ;
 		sound.play();
-		continueKey = game.input.keyboard.addKey(Phaser.Keyboard.C);		
 
 		map  = this.game.add.tilemap('map');
 		map.addTilesetImage('woodland','tile3');
@@ -106,14 +106,35 @@ level1BM = {
 	    librarian2.animations.add('S', [24, 25, 26,27, 28, 29, 30, 31], 10, true);
 	    librarian2.animations.add('W', [16, 17, 18,19, 20, 21, 22, 23], 10, true);
 	    librarian2.animations.add('E', [8, 9, 10,11, 12, 13, 14, 15], 10, true);
+
+	    	    		//  ***  create an enemy3   ***  
+	    librarian3 = game.add.sprite(17* tileSize, 15 * tileSize, 'enemy3', 0);
+	    librarian3.animations.add('N', [0, 1, 2,3, 4, 5, 6, 7], 10, true);
+	    librarian3.animations.add('S', [24, 25, 26,27, 28, 29, 30, 31], 10, true);
+	    librarian3.animations.add('W', [16, 17, 18,19, 20, 21, 22, 23], 10, true);
+	    librarian3.animations.add('E', [8, 9, 10,11, 12, 13, 14, 15], 10, true);
+
+	    	    	    		//  ***  create an enemy4   ***  
+	    librarian4 = game.add.sprite(17* tileSize, 15 * tileSize, 'enemy4', 0);
+	    librarian4.animations.add('N', [0, 1, 2,3, 4, 5, 6, 7], 10, true);
+	    librarian4.animations.add('S', [24, 25, 26,27, 28, 29, 30, 31], 10, true);
+	    librarian4.animations.add('W', [16, 17, 18,19, 20, 21, 22, 23], 10, true);
+	    librarian4.animations.add('E', [8, 9, 10,11, 12, 13, 14, 15], 10, true);
+
+
 	
 	        
 	     game.physics.arcade.enable(player);
 	    // enable physics on the librarians enemy
 	    game.physics.arcade.enable(librarian);
 	    game.physics.arcade.enable(librarian2);
+	    game.physics.arcade.enable(librarian3);
+	    game.physics.arcade.enable(librarian4);
+
 	    librarian.body.collideWorldBounds = true;
 	    librarian2.body.collideWorldBounds = true;
+	    librarian3.body.collideWorldBounds = true;
+	    librarian4.body.collideWorldBounds = true;
 
 
 	    setInterval(function(){ 
@@ -135,21 +156,21 @@ level1BM = {
 		        	    {
 		        	    	// up 	
 		        	    	enemy2Direction = "N";
-		        	      
+		        	
 		        	    	
 		        	    }
 
 		        	    else if (currentNextPointX < currentEnemy2Xtile && currentNextPointY == currentEnemyY2tile)
 		        	    {
 		        	    	// left
-		        	       
+		        	      
 
 		        	    	enemy2Direction = "W";
 		        	    	
 		        	    }
 		        	    else if (currentNextPointX > currentEnemy2Xtile && currentNextPointY == currentEnemyY2tile)
 		        	    {
-		        	    
+	
 		        	    	// right
 		        	    	enemy2Direction = "E";
 		        	    
@@ -157,7 +178,7 @@ level1BM = {
 
 		        	    else if (currentNextPointX == currentEnemy2Xtile && currentNextPointY > currentEnemyY2tile)
 		        	    {
-		        	      
+	
 
 		        	    	// down   	
 		        	    	enemy2Direction = "S";
@@ -185,8 +206,6 @@ level1BM = {
 	    setInterval(function(){ 
 	        	
 	        easystar.findPath(currentEnemyXtile, currentEnemyYtile, currentPlayerXtile, currentPlayerYtile, function( path ) {
-	        		
-
 	        	    if (path === null) {
 	        	        console.log("The path to the destination point was not found.");
 	        	    } 
@@ -233,6 +252,122 @@ level1BM = {
 	        	    
 	        	    if (enemyDirection != "STOP"){
 	        	    	librarian.animations.play(enemyDirection);
+	        			
+	        		}
+	        	    
+	        	});
+
+	        	easystar.calculate();
+	        	
+	        }, timeStep);
+
+	   	    setInterval(function(){ 
+	        	
+	        easystar.findPath(currentEnemy3Xtile, currentEnemy3Ytile, currentPlayerXtile, currentPlayerYtile, function( path ) {
+	        	    if (path === null) {
+	        	        console.log("The path to the destination point was not found.");
+	        	    } 
+	        	    
+	        	    if (path) {
+	        	    	currentNextPointX = path[1].x;
+	        	        currentNextPointY = path[1].y;
+	        	    }
+
+
+					if (currentNextPointX == currentEnemy3Xtile && currentNextPointY < currentEnemy3Ytile)
+	        	    {
+	        	    	// up 	
+	        	    	enemy3Direction = "N";
+	        	    	
+	        	    }
+
+	        	    else if (currentNextPointX < currentEnemy3Xtile && currentNextPointY == currentEnemy3Ytile)
+	        	    {
+	        	    	// left
+	        	    	enemy3Direction = "W";
+	        	    	
+	        	    }
+	        	    else if (currentNextPointX > currentEnemy3Xtile && currentNextPointY == currentEnemy3Ytile)
+	        	    {
+	        	    	// right
+	        	    	enemy3Direction = "E";
+	        	    
+	        	    }
+
+	        	    else if (currentNextPointX == currentEnemy3Xtile && currentNextPointY > currentEnemy3Ytile)
+	        	    {
+	        	    	// down   	
+	        	    	enemy3Direction = "S";
+	        	    	
+	        	    }
+
+	        	    else
+	        	    {
+	        	    	
+	        	    	enemy3Direction = "STOP";
+	        	    	
+	        	    }
+	        	    
+	        	    if (enemy3Direction != "STOP"){
+	        	    	librarian3.animations.play(enemy3Direction);
+	        			
+	        		}
+	        	    
+	        	});
+
+	        	easystar.calculate();
+	        	
+	        }, timeStep);
+
+	        	   	    setInterval(function(){ 
+	        	
+	        easystar.findPath(currentEnemy4Xtile, currentEnemy4Ytile, currentPlayerXtile, currentPlayerYtile, function( path ) {
+	        	    if (path === null) {
+	        	        console.log("The path to the destination point was not found.");
+	        	    } 
+	        	    
+	        	    if (path) {
+	        	    	currentNextPointX = path[1].x;
+	        	        currentNextPointY = path[1].y;
+	        	    }
+
+
+					if (currentNextPointX == currentEnemy4Xtile && currentNextPointY < currentEnemy4Ytile)
+	        	    {
+	        	    	// up 	
+	        	    	enemy4Direction = "N";
+	        	    	
+	        	    }
+
+	        	    else if (currentNextPointX < currentEnemy4Xtile && currentNextPointY == currentEnemy4Ytile)
+	        	    {
+	        	    	// left
+	        	    	enemy4Direction = "W";
+	        	    	
+	        	    }
+	        	    else if (currentNextPointX > currentEnemy4Xtile && currentNextPointY == currentEnemy4Ytile)
+	        	    {
+	        	    	// right
+	        	    	enemy4Direction = "E";
+	        	    
+	        	    }
+
+	        	    else if (currentNextPointX == currentEnemy4Xtile && currentNextPointY > currentEnemy4Ytile)
+	        	    {
+	        	    	// down   	
+	        	    	enemy4Direction = "S";
+	        	    	
+	        	    }
+
+	        	    else
+	        	    {
+	        	    	
+	        	    	enemy4Direction = "STOP";
+	        	    	
+	        	    }
+	        	    
+	        	    if (enemy4Direction != "STOP"){
+	        	    	librarian4.animations.play(enemy4Direction);
 	        			
 	        		}
 	        	    
@@ -311,13 +446,13 @@ level1BM = {
 		}
 
 	},
-
-
 	update: function(){
 		
 		game.physics.arcade.collide(player, groundLayer);
 		game.physics.arcade.collide(librarian, groundLayer);
 		game.physics.arcade.collide(librarian2, groundLayer);
+		game.physics.arcade.collide(librarian3,groundLayer);
+		game.physics.arcade.collide(librarian4,groundLayer);
 
 		 player.body.velocity.set(0);
 
@@ -349,7 +484,7 @@ level1BM = {
 
 
 		  // Move the ENEMY
-	        var enemySpeed = 70;
+	        var enemySpeed = 65;
 	       
 	        if (enemyDirection == "W") {
 	        	librarian.body.velocity.x = -enemySpeed;
@@ -377,7 +512,7 @@ level1BM = {
 	        	librarian.body.velocity.y = 0;
 	        }
 
-	       	var enemy2Speed = 50;
+	       	var enemy2Speed = 55;
 	       
 	        if (enemy2Direction == "W") {
 	        	librarian2.body.velocity.x = -enemy2Speed;
@@ -405,6 +540,62 @@ level1BM = {
 	        	librarian2.body.velocity.y = 0;
 	        }
 
+	        var enemy3Speed = 90;
+	       
+	        if (enemy3Direction == "W") {
+	        	librarian3.body.velocity.x = -enemy3Speed;
+	        }
+	        else if (enemy3Direction == "E")
+	        {
+	        	librarian3.body.velocity.x = enemy3Speed;
+	        }
+	        else if (enemy3Direction == "N") {
+	        	librarian3.body.velocity.y = -enemy3Speed;
+	        }
+	        else if (enemy3Direction == "S")
+	        {
+	        	librarian3.body.velocity.y = enemy3Speed;
+	        }
+
+	        else if (enemy3Direction == "STOP")
+	        {
+	        	librarian3.body.velocity.x = 0;
+	        	librarian3.body.velocity.y = 0;
+	        }
+	        else // JUST IN CASE IF enemyDirection wouldnt exist we stop the librarian movement
+	        {
+	        	librarian3.body.velocity.x = 0;
+	        	librarian3.body.velocity.y = 0;
+	        }
+
+	        var enemy4Speed = 80;
+	       
+	        if (enemy4Direction == "W") {
+	        	librarian4.body.velocity.x = -enemy4Speed;
+	        }
+	        else if (enemy4Direction == "E")
+	        {
+	        	librarian4.body.velocity.x = enemy4Speed;
+	        }
+	        else if (enemy4Direction == "N") {
+	        	librarian4.body.velocity.y = -enemy4Speed;
+	        }
+	        else if (enemy4Direction == "S")
+	        {
+	        	librarian4.body.velocity.y = enemy4Speed;
+	        }
+
+	        else if (enemy4Direction == "STOP")
+	        {
+	        	librarian4.body.velocity.x = 0;
+	        	librarian4.body.velocity.y = 0;
+	        }
+	        else // JUST IN CASE IF enemyDirection wouldnt exist we stop the librarian movement
+	        {
+	        	librarian4.body.velocity.x = 0;
+	        	librarian4.body.velocity.y = 0;
+	        }
+
 	        for(i=0;i<collectablesNum;i++){
 		         game.physics.arcade.overlap(books[i], player ,function(e){
 
@@ -414,14 +605,17 @@ level1BM = {
 				    booksPicked +=1;
 				   
 				    if(booksPicked >= collectablesNum){
-				    	gameoverText.text=" !Bien¡\n Oprime C para pasar al nivel 2";
-				        gameoverText.visible = true;
+						gameoverText.text="!Bien¡ Oprime C \n para regresar al mapa";
+						gameoverText.visible = true;
 				        continueKey.onDown.addOnce(function(){ 
-				        	sessionStorage.points = counterPoints;
-				        	sessionStorage.lives = lives.countLiving();
-				        	game.state.start("level2");
+				        	window.location = ("../schoolAdventure.html");
 
 				    	}, this);
+				    	
+				        
+				        
+				        
+
 				    }	        	
 		        	
 		        });
@@ -429,6 +623,8 @@ level1BM = {
 
 	     	  game.physics.arcade.overlap(librarian, player ,this.hitPlayer);
 	     	  game.physics.arcade.overlap(librarian2, player ,this.hitPlayer);
+	     	  game.physics.arcade.overlap(librarian3,player,this.hitPlayer);
+	     	  game.physics.arcade.overlap(librarian4,player,this.hitPlayer);
 
 	        currentPlayerXtile = Math.floor(player.body.position.x / tileSize);
 		    currentPlayerYtile = Math.floor(player.body.position.y / tileSize);	
@@ -439,8 +635,16 @@ level1BM = {
 		   currentEnemyXtile = Math.floor(librarian.body.position.x / tileSize);
 	        currentEnemyYtile = Math.floor(librarian.body.position.y / tileSize);
 
-	         currentEnemy2Xtile = Math.floor(librarian2.body.position.x / tileSize);;
-	        currentEnemyY2tile = Math.floor(librarian2.body.position.y / tileSize);;
+	         currentEnemy2Xtile = Math.floor(librarian2.body.position.x / tileSize);
+	        currentEnemyY2tile = Math.floor(librarian2.body.position.y / tileSize);
+
+	        currentEnemy3Xtile = Math.floor(librarian3.body.position.x / tileSize);
+	        currentEnemy3Ytile = Math.floor(librarian3.body.position.y / tileSize);
+
+	        currentEnemy4Xtile = Math.floor(librarian4.body.position.x / tileSize);
+	        currentEnemy4Ytile = Math.floor(librarian4.body.position.y / tileSize);
+
+
 
 	      
 	}

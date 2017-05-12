@@ -25,6 +25,8 @@ preload ={
 		game.load.image('tile4','assets/tilemap_src/tiles/open_tileset_2x.png');
 		game.load.image('book','assets/tilemap_src/tiles/book.png');
 		game.load.image('life', 'assets/lifes.png');
+		game.load.spritesheet('enemy3','assets/player/green_penguin.png',32,32);
+		game.load.spritesheet('enemy4','assets/player/orange_penguin.png',32,32);
 		game.load.spritesheet('enemy','assets/player/red_penguin.png',32,32);
 		game.load.spritesheet('enemy2','assets/player/pink_penguin.png',32,32);
 		game.load.spritesheet('player','assets/player/player_penguin.png', 32,32);

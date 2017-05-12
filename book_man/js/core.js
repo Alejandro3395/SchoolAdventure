@@ -40,11 +40,20 @@ var currentEnemyYtile;
 var currentEnemy2Xtile;
 var currentEnemyY2tile;
 
+var currentEnemy3Xtile;
+var currentEnemy3Ytile;
+
+var currentEnemy4Xtile;
+var currentEnemy4Ytile;
+
 var currentNextPointX; // next movement point in X
 var currentNextPointY; // next movement point in Y
 
 var enemyDirection = "STOP";
 var enemy2Direction = "STOP";
+var enemy3Direction = "STOP";
+var enemy4Direction = "STOP";
+
 
 //************* TILES ***************
 
@@ -63,4 +72,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example');
 game.state.add("boot",boot);
 game.state.add("preload", preload);
 game.state.add("level1",level1BM);
+game.state.add("level2", level2BM);
+game.state.add("level3", level3BM);
+//game.state.add("level3",level3BM);
 game.state.start("boot");

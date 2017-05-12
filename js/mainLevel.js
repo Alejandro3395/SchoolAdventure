@@ -65,7 +65,7 @@ adventure = {
     map.setTileLocationCallback(40,40,2,5,this.cafeCall, this, "GroundLayer");
 
     //Debug collisions layer
-    groundLayer.debug = true;
+    //groundLayer.debug = true;
 
  
 
