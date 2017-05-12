@@ -20,7 +20,7 @@ var totalLife ;
 level3BM = {
 
 	actionOnClick:function(){
-		window.location = ("../schoolAdventure.html");
+		window.location = ("../index.html");
 	},
 
 	create: function(){
@@ -403,7 +403,7 @@ level3BM = {
     	 }
     	lives.fixedToCamera = true;
 
-    	button = game.add.button(12.5 ,16.75*tileSize ,  'button',this.actionOnClick);
+    	button = game.add.button(12.5 ,15.6*tileSize ,  'button',this.actionOnClick);
     	button.fixedToCamera=true;
 
      	gameoverText = game.add.text(game.world.centerX-225,game.world.centerY,' ', { font: '50px Arial', fill: '#fff' });
@@ -608,7 +608,7 @@ level3BM = {
 						gameoverText.text="!Bien¡ Oprime C \n para regresar al mapa";
 						gameoverText.visible = true;
 				        continueKey.onDown.addOnce(function(){ 
-				        	window.location = ("../schoolAdventure.html");
+				        	window.location = ("../index.html");
 
 				    	}, this);
 				    	
